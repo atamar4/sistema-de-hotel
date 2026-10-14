@@ -18,13 +18,20 @@ package sistema;
         quartos.add(new Quarto(301, "Suíte", 250));
     }
     
-    
-    
-    
-    public void listarQuartos(){
-            for (Quarto q : quartos){
-                q.exibirDados();
-            }
+    public void listarQuartos() {
+        for (Quarto q : quartos) {
+            q.exibirDados();
+        }
     }
-    
+
+    private Quarto buscarQuarto(int numero) {
+        for (Quarto q : quartos) {
+            if (q.getNumero() == numero) {
+                return q;
+            }
+        }
+        return null;
+    }
+
+
 }

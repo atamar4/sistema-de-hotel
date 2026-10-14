@@ -52,6 +52,34 @@ public class Menu {
         System.out.println();
         hotel.listarQuartos();
         
+        System.out.print("\nNome do hóspede: ");
+        String nome = scanner.nextLine();
+        System.out.print("CPF (11 números): ");
+        String cpf = scanner.nextLine();
+        int numeroQuarto = lerInteiro("Número do quarto: ");
+        int dias = lerInteiro("Quantidade de dias: ");
+
+        String erro = hotel.fazerReserva(nome, cpf, numeroQuarto, dias);
+
+        if (erro == null) {
+            System.out.println("\nReserva realizada!");
+            hotel.buscarHospede(cpf).exibirDados();
+        } else {
+            System.out.println("\nNão foi possível reservar: " + erro);
+        }
+    }
+
+    private static void consultarReserva() {
+        System.out.print("\nCPF do hóspede: ");
+        Hospede hospede = hotel.buscarHospede(scanner.nextLine());
+
+        if (hospede == null) {
+            System.out.println("Nenhuma reserva ativa para este CPF.");
+        } else {
+            hospede.exibirDados();
+        }
+    }
+        
         /** adicionar dados do nome
          * nextLine
          * adicionar o CPF
