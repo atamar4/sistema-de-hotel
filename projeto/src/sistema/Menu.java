@@ -48,4 +48,17 @@ public class Menu {
         scanner.close();
     }
     
+    private static void fazerReserva(){
+        System.out.println();
+        hotel.listarQuartos();
+        
+        /** adicionar dados do nome
+         * nextLine
+         * adicionar o CPF
+         * chamar nextLine
+         * adicionar o numero do quarto
+         * int dias = lerInteiros - adicionar no hospede o int dias
+         **/
+    }
+    
 }
