@@ -28,6 +28,15 @@ public class Quarto {
         disponivel = true;
     }
     
+    public double calcularEstadia(int dias){
+        return valorDiario * dias;
+    }
+    
+    public void exibirDados(){
+        String situacao = disponivel ? "Disponível" : "Ocupado";
+        System.out.printf("Quarto %d | %-8s | R$ %.2f | %s%n", numero, tipo, valorDiario, situacao);
+    }
+    
     public int getNumero() {
         return numero;
     }
