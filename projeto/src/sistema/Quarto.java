@@ -15,6 +15,19 @@ public class Quarto {
         this.disponivel = true; // todo quarto novo começa livre
     }
 
+    public boolean reservar(){
+        if(disponivel){
+            disponivel = false;
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    public void liberar(){
+        disponivel = true;
+    }
+    
     public int getNumero() {
         return numero;
     }
