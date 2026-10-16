@@ -80,13 +80,20 @@ public class Menu {
         }
     }
         
-        /** adicionar dados do nome
-         * nextLine
-         * adicionar o CPF
-         * chamar nextLine
-         * adicionar o numero do quarto
-         * int dias = lerInteiros - adicionar no hospede o int dias
-         **/
+    
+    private static void fazerCheckIn() {
+        System.out.print("\nCPF do hóspede: ");
+        Hospede hospede = hotel.buscarHospede(scanner.nextLine());
+
+        if (hospede == null) {
+            System.out.println("Nenhuma reserva ativa para este CPF.");
+        } else if (hospede.fazerCheckIn()) {
+            System.out.println("Check-in realizado! Bem-vindo(a), " + hospede.getNome() + ".");
+        } else {
+            System.out.println("Check-in não permitido. Situação atual: " + hospede.getSituacao());
+        }
+    }
+       
     }
     
 }
