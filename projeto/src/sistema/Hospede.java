@@ -15,10 +15,10 @@ public class Hospede {
         this.quarto = quarto;
         this.dias = dias;
     }
-   teste2
+
            
 
-    // Só faz check-in uma vez
+ // Só faz check-in uma vez
     public boolean fazerCheckIn() {
         if (checkInFeito || checkOutFeito) {
             return false;
