@@ -93,7 +93,14 @@ public class Menu {
             System.out.println("Check-in não permitido. Situação atual: " + hospede.getSituacao());
         }
     }
-       
+     // Repete a pergunta até o usuário digitar um número inteiro
+    private static int lerInteiro(String mensagem) {
+        System.out.print(mensagem);
+        while (!scanner.hasNextInt()) {
+            scanner.next();
+            System.out.print("Valor inválido. " + mensagem);
+        }
+   
     }
     
 }
