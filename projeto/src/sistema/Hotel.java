@@ -18,6 +18,8 @@ package sistema;
         quartos.add(new Quarto(301, "Suite", 250));
     }
     
+    
+    // Retorna null se a reserva foi feita, ou o motivo do erro se a operação for inválida    
     public String fazerReserva(String nome, String cpf, int numeroQuarto, int dias){
         String cpfLimpo = limparCpf(cpf);
         
@@ -29,15 +31,6 @@ package sistema;
         }
         if (dias < 1) {
             return "A quantidade de dias deve ser pelo menos 1.";
-        }
- 
-        //Verifica se o CPF já possui uma reserva ativa
-        Hospede hospedeExistente = bsucarHospede(cpfLimpo);
-        
-         if (hospedeExistente != null) {
-            return "Este CPF já possui uma reserva ativa no quarto "
-                    + hospedeExistente.getQuarto().getNumero()
-                    + ". Não é possível fazer outra reserva.";
         }
         
         Quarto quarto = buscarQuarto(numeroQuarto);
@@ -52,7 +45,17 @@ package sistema;
         hospedes.add(new Hospede(nome.trim(), cpfLimpo, quarto, dias));
         return null;
         }
-    }
+    
+    // Procura o hóspede pelo CPF (só os que ainda não fizeram check-out). Retorna null se não achar.
+    public Hospede buscarHospede(String cpf) {
+        String cpfLimpo = cpf.replaceAll("[^0-9]", "");
+        for (Hospede h : hospedes) {
+            if (h.getCpf().equals(cpfLimpo) && !h.isFinalizado()) {
+                return h;
+            }
+        }
+        return null;
+    }    
     
     public void listarQuartos() {
         for (Quarto q : quartos) {
