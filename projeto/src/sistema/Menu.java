@@ -11,14 +11,18 @@ public class Menu {
         int opcao;
 
         do {
-            System.out.println("===== HOTEL =====");
+            System.out.println("=============================");
+            System.out.println("======== AGA PALACE ========");
+            System.out.println("   Sistema de Gerenciamento  ");
+            System.out.println("=============================");
             System.out.println("1 - Fazer reserva");
             System.out.println("2 - Consultar reserva");
             System.out.println("3 - Check-in");
             System.out.println("4 - Check-out");
             System.out.println("5 - Ver quartos");
             System.out.println("6 - Sair");
-            
+            System.out.println("=============================");
+
             opcao = lerInteiro("Escolha uma opcao: ");
 
             switch (opcao) {
@@ -39,10 +43,10 @@ public class Menu {
                     hotel.listarQuartos();
                     break;
                 case 6:
-                    System.out.println("Encerrando o sistema.");
+                    System.out.println("Encerrando o sistema. Obrigada por utilizar o AGA Palace!");
                     break;
                 default:
-                    System.out.println("Opcao invalida.");
+                    System.out.println("Opcao invalida. Tente novamente.");
             }
         } while (opcao != 6);
 
@@ -51,12 +55,21 @@ public class Menu {
     
     private static void fazerReserva(){
         System.out.println();
+        System.out.println("----------------------------------------------");
+        System.out.println("             QUARTOS DO AGA PALACE");
+        System.out.println("----------------------------------------------");
+        
+        
         hotel.listarQuartos();
+        
+        System.out.println("----------------------------------------------");
+        System.out.println("                 NOVA RESERVA"                 );
+        System.out.println("----------------------------------------------");
         
         System.out.print("\nNome do hospede: ");
         String nome = scanner.nextLine();
         
-        System.out.print("CPF (11 números): ");
+        System.out.print("CPF (11 numeros): ");
         String cpf = scanner.nextLine();
         
         int numeroQuarto = lerInteiro("Numero do quarto: ");
@@ -65,21 +78,34 @@ public class Menu {
         String erro = hotel.fazerReserva(nome, cpf, numeroQuarto, dias);
 
         if (erro == null) {
-            System.out.println("\nReserva realizada!");
+            System.out.println("");
+            System.out.println("----------------------------------------------");
+            System.out.println("              RESERVA REALIZADA!");
+            System.out.println("----------------------------------------------");
+
             hotel.buscarHospede(cpf).exibirDados();
+            System.out.println("");
+            
         } else {
             System.out.println("\nNao foi possivel reservar: " + erro);
         }
+        System.out.println("");
     }
 
     private static void consultarReserva() {
         System.out.print("\nCPF do hospede: ");
         Hospede hospede = hotel.buscarHospede(scanner.nextLine());
+        
+        System.out.println("");
 
         if (hospede == null) {
             System.out.println("Nenhuma reserva ativa para este CPF.");
         } else {
+            System.out.println("----------------------------------------------");
+            System.out.println("              DADOS DA RESERVA");
+            System.out.println("----------------------------------------------");
             hospede.exibirDados();
+            System.out.println("----------------------------------------------");        
         }
     }
         
@@ -95,6 +121,7 @@ public class Menu {
         } else {
             System.out.println("Check-in nao permitido. Situacao atual: " + hospede.getSituacao());
         }
+        System.out.println("");
     }
     
     // Realizar o check-out
@@ -117,6 +144,7 @@ public class Menu {
                 + hospede.getSituacao()
             );
         }
+        System.out.println("");
     }    
     
      // Repete a pergunta até o usuário digitar um número inteiro
