@@ -15,11 +15,11 @@ package sistema;
         quartos.add(new Quarto(102, "Solteiro", 120));
         quartos.add(new Quarto(201, "Casal", 180));
         quartos.add(new Quarto(202, "Casal", 180));
-        quartos.add(new Quarto(301, "Suíte", 250));
+        quartos.add(new Quarto(301, "Suite", 250));
     }
     
     public String fazerReserva(String nome, String cpf, int numeroQuarto, int dias){
-        String cpfLimpo = limpocpf(cpf);
+        String cpfLimpo = limparCpf(cpf);
         
          if (nome.trim().length() == 0) {
             return "O nome não pode ficar vazio.";
@@ -31,6 +31,15 @@ package sistema;
             return "A quantidade de dias deve ser pelo menos 1.";
         }
  
+        //Verifica se o CPF já possui uma reserva ativa
+        Hospede hospedeExistente = bsucarHospede(cpfLimpo);
+        
+         if (hospedeExistente != null) {
+            return "Este CPF já possui uma reserva ativa no quarto "
+                    + hospedeExistente.getQuarto().getNumero()
+                    + ". Não é possível fazer outra reserva.";
+        }
+        
         Quarto quarto = buscarQuarto(numeroQuarto);
         if (quarto == null) {
             return "O quarto " + numeroQuarto + " não existe.";
