@@ -18,6 +18,7 @@ public class Menu {
             System.out.println("4 - Check-out");
             System.out.println("5 - Ver quartos");
             System.out.println("6 - Sair");
+            
             opcao = lerInteiro("Escolha uma opção: ");
 
             switch (opcao) {
@@ -54,8 +55,10 @@ public class Menu {
         
         System.out.print("\nNome do hóspede: ");
         String nome = scanner.nextLine();
+        
         System.out.print("CPF (11 números): ");
         String cpf = scanner.nextLine();
+        
         int numeroQuarto = lerInteiro("Número do quarto: ");
         int dias = lerInteiro("Quantidade de dias: ");
 
@@ -93,6 +96,29 @@ public class Menu {
             System.out.println("Check-in não permitido. Situação atual: " + hospede.getSituacao());
         }
     }
+    
+    // Realizar o check-out
+    private static void fazerCheckOut() {
+        System.out.print("\nCPF do hóspede: ");
+        Hospede hospede = hotel.buscarHospede(scanner.nextLine());
+
+        if (hospede == null) {
+            System.out.println(
+                "Nenhuma reserva ativa para este CPF."
+            );
+        } else if (hospede.fazerCheckOut()) {
+            System.out.println(
+                "Check-out realizado com sucesso! Até logo, "
+                + hospede.getNome() + "."
+            );
+        } else {
+            System.out.println(
+                "Check-out não permitido. Situação atual: "
+                + hospede.getSituacao()
+            );
+        }
+    }    
+    
      // Repete a pergunta até o usuário digitar um número inteiro
     private static int lerInteiro(String mensagem) {
         System.out.print(mensagem);
@@ -101,6 +127,12 @@ public class Menu {
             System.out.print("Valor inválido. " + mensagem);
         }
    
+    }
+    
+        int valor = scanner.nextInt();
+        scanner.nextLine(); // consome o ENTER que sobrou
+        
+        return valor;
     }
     
 }
