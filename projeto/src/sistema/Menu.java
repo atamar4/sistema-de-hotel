@@ -127,7 +127,7 @@ public class Menu {
             System.out.print("Valor inválido. " + mensagem);
         }
    
-    }
+    
     
         int valor = scanner.nextInt();
         scanner.nextLine(); // consome o ENTER que sobrou
