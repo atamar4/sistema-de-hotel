@@ -69,6 +69,10 @@ public class Hospede {
     public String getCpf() {
         return cpf;
     }
+    
+    public Quarto getQuarto(){
+        return quarto;
+    }
 
     public boolean isFinalizado() {
         return checkOutFeito;
