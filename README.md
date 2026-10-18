@@ -43,6 +43,8 @@ Quartos cadastrados:
 - O check-in só pode ser feito uma vez.
 - O check-out só pode ser feito depois do check-in e libera o quarto.
 - Se o usuário digitar uma letra onde deveria ser um número, o sistema pede de novo.
+- Um CPF não pode possuir duas reservas ativas, mesmo que seja informado outro nome ou quarto.
+- Após o check-out, o CPF pode realizar uma nova reserva.
 
 ## Estrutura do projeto
 
@@ -79,13 +81,13 @@ java sistema.Menu
 Escolha uma opção: 1
 
 Nome do hóspede: Maria Silva
-CPF (11 números): 123.456.789-09
+CPF (11 números): 12345678900
 Número do quarto: 201
 Quantidade de dias: 3
 
 Reserva realizada!
 Hóspede: Maria Silva
-CPF: 12345678909
+CPF: 12345678900
 Quarto: 201 (Casal)
 Dias: 3
 Valor total: R$ 540,00
@@ -96,7 +98,7 @@ Situação: Aguardando check-in
 
 | Integrante | Responsabilidade |
 |---|---|
-| Ana Clara Souza Barbosa | `Quarto.java` |
-| Gabriela Gonçalves de Souza | `Hotel.java` |
+| Ana Clara Souza Barbosa | `Quarto.java` e `Menu.java` |
+| Gabriela Gonçalves de Souza | `Hotel.java` e `Menu.java`|
 | Atamara Batista Tavares | `Hospede.java` e `Menu.java` |
 
