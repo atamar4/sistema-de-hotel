@@ -14,11 +14,9 @@ public class Hospede {
         this.cpf = cpf;
         this.quarto = quarto;
         this.dias = dias;
-    }
+    }    
 
-           
-
- // Só faz check-in uma vez
+ // So faz check-in uma vez
     public boolean fazerCheckIn() {
         if (checkInFeito || checkOutFeito) {
             return false;
@@ -28,7 +26,7 @@ public class Hospede {
         }
     }
 
-    // Só faz check-out depois do check-in. Ao sair, libera o quarto.
+    // So faz check-out depois do check-in. Ao sair, libera o quarto.
     public boolean fazerCheckOut() {
         if (!checkInFeito || checkOutFeito) {
             return false;
@@ -54,12 +52,12 @@ public class Hospede {
     }
 
     public void exibirDados() {
-        System.out.println("Hóspede: " + nome);
+        System.out.println("Hospede: " + nome);
         System.out.println("CPF: " + cpf);
         System.out.println("Quarto: " + quarto.getNumero() + " (" + quarto.getTipo() + ")");
         System.out.println("Dias: " + dias);
         System.out.printf("Valor total: R$ %.2f%n", calcularTotal());
-        System.out.println("Situação: " + getSituacao());
+        System.out.println("Situacao: " + getSituacao());
     }
 
     public String getNome() {
@@ -77,4 +75,7 @@ public class Hospede {
     public boolean isFinalizado() {
         return checkOutFeito;
     }
+    
+    
+    
 }
