@@ -19,7 +19,7 @@ public class Menu {
             System.out.println("5 - Ver quartos");
             System.out.println("6 - Sair");
             
-            opcao = lerInteiro("Escolha uma opção: ");
+            opcao = lerInteiro("Escolha uma opcao: ");
 
             switch (opcao) {
                 case 1:
@@ -42,7 +42,7 @@ public class Menu {
                     System.out.println("Encerrando o sistema.");
                     break;
                 default:
-                    System.out.println("Opção inválida.");
+                    System.out.println("Opcao invalida.");
             }
         } while (opcao != 6);
 
@@ -53,13 +53,13 @@ public class Menu {
         System.out.println();
         hotel.listarQuartos();
         
-        System.out.print("\nNome do hóspede: ");
+        System.out.print("\nNome do hospede: ");
         String nome = scanner.nextLine();
         
         System.out.print("CPF (11 números): ");
         String cpf = scanner.nextLine();
         
-        int numeroQuarto = lerInteiro("Número do quarto: ");
+        int numeroQuarto = lerInteiro("Numero do quarto: ");
         int dias = lerInteiro("Quantidade de dias: ");
 
         String erro = hotel.fazerReserva(nome, cpf, numeroQuarto, dias);
@@ -68,12 +68,12 @@ public class Menu {
             System.out.println("\nReserva realizada!");
             hotel.buscarHospede(cpf).exibirDados();
         } else {
-            System.out.println("\nNão foi possível reservar: " + erro);
+            System.out.println("\nNao foi possivel reservar: " + erro);
         }
     }
 
     private static void consultarReserva() {
-        System.out.print("\nCPF do hóspede: ");
+        System.out.print("\nCPF do hospede: ");
         Hospede hospede = hotel.buscarHospede(scanner.nextLine());
 
         if (hospede == null) {
@@ -85,7 +85,7 @@ public class Menu {
         
     
     private static void fazerCheckIn() {
-        System.out.print("\nCPF do hóspede: ");
+        System.out.print("\nCPF do hospede: ");
         Hospede hospede = hotel.buscarHospede(scanner.nextLine());
 
         if (hospede == null) {
@@ -93,13 +93,13 @@ public class Menu {
         } else if (hospede.fazerCheckIn()) {
             System.out.println("Check-in realizado! Bem-vindo(a), " + hospede.getNome() + ".");
         } else {
-            System.out.println("Check-in não permitido. Situação atual: " + hospede.getSituacao());
+            System.out.println("Check-in nao permitido. Situacao atual: " + hospede.getSituacao());
         }
     }
     
     // Realizar o check-out
     private static void fazerCheckOut() {
-        System.out.print("\nCPF do hóspede: ");
+        System.out.print("\nCPF do hospede: ");
         Hospede hospede = hotel.buscarHospede(scanner.nextLine());
 
         if (hospede == null) {
@@ -108,12 +108,12 @@ public class Menu {
             );
         } else if (hospede.fazerCheckOut()) {
             System.out.println(
-                "Check-out realizado com sucesso! Até logo, "
+                "Check-out realizado com sucesso! Ate logo, "
                 + hospede.getNome() + "."
             );
         } else {
             System.out.println(
-                "Check-out não permitido. Situação atual: "
+                "Check-out nao permitido. Situacao atual: "
                 + hospede.getSituacao()
             );
         }
@@ -124,7 +124,7 @@ public class Menu {
         System.out.print(mensagem);
         while (!scanner.hasNextInt()) {
             scanner.next();
-            System.out.print("Valor inválido. " + mensagem);
+            System.out.print("Valor invalido. " + mensagem);
         }
    
     

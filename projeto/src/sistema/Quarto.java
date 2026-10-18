@@ -37,7 +37,7 @@ public class Quarto {
     
     // Mostra os dados do quarto no terminal, com a situação (Disponível ou Ocupado)
     public void exibirDados(){
-        String situacao = disponivel ? "Disponível" : "Ocupado";
+        String situacao = disponivel ? "Disponivel" : "Ocupado";
         System.out.printf("Quarto %d | %-8s | R$ %.2f | %s%n", numero, tipo, valorDiario, situacao);
     }
     
