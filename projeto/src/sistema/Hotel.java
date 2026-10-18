@@ -21,6 +21,7 @@ package sistema;
     
     // Retorna null se a reserva foi feita, ou o motivo do erro se a operação for inválida    
     public String fazerReserva(String nome, String cpf, int numeroQuarto, int dias){
+        
         String cpfLimpo = limparCpf(cpf);
         
          if (nome.trim().length() == 0) {
@@ -33,22 +34,36 @@ package sistema;
             return "A quantidade de dias deve ser pelo menos 1.";
         }
         
+        // Verifica se o CPF já possui uma reserva ativa
+        Hospede hospedeExistente = buscarHospede(cpfLimpo);
+
+        if (hospedeExistente != null) {
+            return "Este CPF já possui uma reserva ativa no quarto "
+                    + hospedeExistente.getQuarto().getNumero()
+                    + ". Não é possível fazer outra reserva.";
+        }
+        
         Quarto quarto = buscarQuarto(numeroQuarto);
+        
         if (quarto == null) {
             return "O quarto " + numeroQuarto + " não existe.";
         }
         if (!quarto.reservar()) {
             return "O quarto " + numeroQuarto + " está ocupado.";
         }
- 
-        //trim serve para remover os espaços em branco do comeco e do fim de um texto
-        hospedes.add(new Hospede(nome.trim(), cpfLimpo, quarto, dias));
+        
+        hospedes.add(new Hospede(
+        nome.trim(), cpfLimpo, quarto, dias
+        ));
+
         return null;
-        }
+    }
     
     // Procura o hóspede pelo CPF (só os que ainda não fizeram check-out). Retorna null se não achar.
     public Hospede buscarHospede(String cpf) {
+        
         String cpfLimpo = cpf.replaceAll("[^0-9]", "");
+        
         for (Hospede h : hospedes) {
             if (h.getCpf().equals(cpfLimpo) && !h.isFinalizado()) {
                 return h;
@@ -72,5 +87,18 @@ package sistema;
         return null;
     }
 
+    // Mantém somente os números do CPF
+    private String limparCpf(String cpf) {
+        String resultado = "";
 
+        for (int i = 0; i < cpf.length(); i++) {
+            char c = cpf.charAt(i);
+
+            if (c >= '0' && c <= '9') {
+                resultado = resultado + c;
+            }
+        }
+
+        return resultado;
+    }
 }
