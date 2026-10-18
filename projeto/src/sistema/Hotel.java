@@ -19,16 +19,16 @@ package sistema;
     }
     
     
-    // Retorna null se a reserva foi feita, ou o motivo do erro se a operação for inválida    
+    // Retorna null se a reserva foi feita, ou o motivo do erro se a operaçao for invalida    
     public String fazerReserva(String nome, String cpf, int numeroQuarto, int dias){
         
         String cpfLimpo = limparCpf(cpf);
         
          if (nome.trim().length() == 0) {
-            return "O nome não pode ficar vazio.";
+            return "O nome nao pode ficar vazio.";
         }
         if (cpfLimpo.length() != 11) {
-            return "CPF inválido: informe os 11 números.";
+            return "CPF invalido: informe os 11 numeros.";
         }
         if (dias < 1) {
             return "A quantidade de dias deve ser pelo menos 1.";
@@ -38,18 +38,18 @@ package sistema;
         Hospede hospedeExistente = buscarHospede(cpfLimpo);
 
         if (hospedeExistente != null) {
-            return "Este CPF já possui uma reserva ativa no quarto "
+            return "Este CPF ja possui uma reserva ativa no quarto "
                     + hospedeExistente.getQuarto().getNumero()
-                    + ". Não é possível fazer outra reserva.";
+                    + ". Nao e possivel fazer outra reserva.";
         }
         
         Quarto quarto = buscarQuarto(numeroQuarto);
         
         if (quarto == null) {
-            return "O quarto " + numeroQuarto + " não existe.";
+            return "O quarto " + numeroQuarto + " nao existe.";
         }
         if (!quarto.reservar()) {
-            return "O quarto " + numeroQuarto + " está ocupado.";
+            return "O quarto " + numeroQuarto + " esta ocupado.";
         }
         
         hospedes.add(new Hospede(
@@ -59,7 +59,7 @@ package sistema;
         return null;
     }
     
-    // Procura o hóspede pelo CPF (só os que ainda não fizeram check-out). Retorna null se não achar.
+    // Procura o hospede pelo CPF (só os que ainda nao fizeram check-out). Retorna null se nao achar.
     public Hospede buscarHospede(String cpf) {
         
         String cpfLimpo = cpf.replaceAll("[^0-9]", "");
@@ -87,7 +87,7 @@ package sistema;
         return null;
     }
 
-    // Mantém somente os números do CPF
+    // Mantem somente os numeros do CPF
     private String limparCpf(String cpf) {
         String resultado = "";
 
