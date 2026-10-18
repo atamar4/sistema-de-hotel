@@ -99,6 +99,6 @@ Situação: Aguardando check-in
 | Integrante | Responsabilidade |
 |---|---|
 | Ana Clara Souza Barbosa | `Quarto.java` e `Menu.java` |
-| Gabriela Gonçalves de Souza | `Hotel.java` e `Menu.java`|
-| Atamara Batista Tavares | `Hospede.java` e `Menu.java` |
+| Gabriela Gonçalves de Souza | `hospede.java` e `Menu.java`|
+| Atamara Batista Tavares | `hotel.java` e `Menu.java` |
 
