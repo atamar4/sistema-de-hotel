@@ -69,29 +69,46 @@ java sistema.Menu
 ```
 
 ## Exemplo de utilização
-
 ```
-===== HOTEL =====
+=============================
+======== AGA PALACE ========
+   Sistema de Gerenciamento
+=============================
 1 - Fazer reserva
 2 - Consultar reserva
 3 - Check-in
 4 - Check-out
 5 - Ver quartos
 6 - Sair
-Escolha uma opção: 1
+=============================
+Escolha uma opcao: 1
 
-Nome do hóspede: Maria Silva
-CPF (11 números): 12345678900
-Número do quarto: 201
+----------------------------------------------
+             QUARTOS DO AGA PALACE
+----------------------------------------------
+Quarto 101 | Solteiro | R$ 120,00 | Disponivel
+Quarto 102 | Solteiro | R$ 120,00 | Disponivel
+Quarto 201 | Casal    | R$ 180,00 | Disponivel
+Quarto 202 | Casal    | R$ 180,00 | Disponivel
+Quarto 301 | Suite    | R$ 250,00 | Disponivel
+----------------------------------------------
+                 NOVA RESERVA
+----------------------------------------------
+Nome do hospede: Maria Silva
+CPF (11 numeros): 12345678900
+Numero do quarto: 201
 Quantidade de dias: 3
 
-Reserva realizada!
-Hóspede: Maria Silva
+----------------------------------------------
+             RESERVA REALIZADA!
+----------------------------------------------
+Hospede: Maria Silva
 CPF: 12345678900
 Quarto: 201 (Casal)
 Dias: 3
 Valor total: R$ 540,00
-Situação: Aguardando check-in
+Situacao: Aguardando check-in
+----------------------------------------------
 ```
 
 ## Divisão de responsabilidades
